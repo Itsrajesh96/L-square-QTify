@@ -1,7 +1,9 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
 import Card from "../Card/Card";
+import Carousel from "../Carousel/Carousel";
 import styles from "./Section.module.css";
 
 function Section({
@@ -18,12 +20,11 @@ function Section({
     async function fetchAlbums() {
       try {
         const response = await axios.get(endpoint);
+        const albumData = Array.isArray(response.data)
+          ? response.data
+          : response.data?.data ?? [];
 
         if (active) {
-          const albumData = Array.isArray(response.data)
-            ? response.data
-            : response.data?.data ?? [];
-
           setAlbums(albumData);
           setError(false);
         }
@@ -47,13 +48,13 @@ function Section({
       <div className={styles.sectionHeader}>
         <h2>{title}</h2>
 
-        {albums.length > 4 && (
+        {albums.length > 0 && (
           <button
             className={styles.toggleButton}
             type="button"
             onClick={() => setExpanded((previous) => !previous)}
           >
-            {expanded ? "Collapse" : "Show All"}
+            {expanded ? "Show All" : "Collapse"}
           </button>
         )}
       </div>
@@ -64,11 +65,15 @@ function Section({
         </p>
       )}
 
-      <div className={styles.albumGrid}>
-        {albums.map((album) => (
-          <Card key={album.id} album={album} />
-        ))}
-      </div>
+      {expanded ? (
+        <div className={styles.albumGrid}>
+          {albums.map((album) => (
+            <Card key={album.id} album={album} />
+          ))}
+        </div>
+      ) : (
+        <Carousel data={albums} />
+      )}
     </section>
   );
 }

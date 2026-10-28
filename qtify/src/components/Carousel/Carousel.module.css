@@ -1,0 +1,30 @@
+
+.carousel {
+  width: 100%;
+  padding: 8px 4px 24px;
+}
+
+.carousel :global(.swiper-slide) {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel :global(.swiper-button-prev),
+.carousel :global(.swiper-button-next) {
+  color: #ffffff;
+  background: #121212;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.carousel :global(.swiper-button-prev)::after,
+.carousel :global(.swiper-button-next)::after {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.carousel :global(.swiper-button-disabled) {
+  display: none;
+}
