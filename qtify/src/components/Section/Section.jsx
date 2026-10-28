@@ -48,13 +48,13 @@ function Section({
       <div className={styles.sectionHeader}>
         <h2>{title}</h2>
 
-        {albums.length > 0 && (
+        {albums.length > 4 && (
           <button
             className={styles.toggleButton}
             type="button"
             onClick={() => setExpanded((previous) => !previous)}
           >
-            {expanded ? "Show All" : "Collapse"}
+            {expanded ? "Collapse" : "Show All"}
           </button>
         )}
       </div>
