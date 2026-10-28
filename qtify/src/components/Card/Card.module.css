@@ -1,0 +1,41 @@
+
+.card {
+  width: 159px;
+  flex: 0 0 159px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+}
+
+.albumImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 6px 8px 8px;
+}
+
+.followChip {
+  max-width: 100%;
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  font-size: 10px !important;
+}
+
+.albumTitle {
+  margin: 8px 0 0;
+  color: #121212;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,47 @@
+.section {
+  padding: 32px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.toggleButton {
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.albumGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 20px 16px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 16px;
+  }
+
+  .albumGrid {
+    gap: 16px;
+  }
+}
