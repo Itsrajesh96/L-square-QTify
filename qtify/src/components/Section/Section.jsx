@@ -20,11 +20,11 @@ function Section({
         const response = await axios.get(endpoint);
 
         if (active) {
-          setAlbums(
-            Array.isArray(response.data)
-              ? response.data
-              : response.data?.data ?? []
-          );
+          const albumData = Array.isArray(response.data)
+            ? response.data
+            : response.data?.data ?? [];
+
+          setAlbums(albumData);
           setError(false);
         }
       } catch (err) {
@@ -58,14 +58,16 @@ function Section({
         )}
       </div>
 
-      {error && <p role="alert">Unable to load albums. Please try again.</p>}
+      {error && (
+        <p role="alert">
+          Unable to load albums. Please try again.
+        </p>
+      )}
 
       <div className={styles.albumGrid}>
-        {albums
-          .slice(0, expanded ? albums.length : 4)
-          .map((album) => (
-            <Card key={album.id} album={album} />
-          ))}
+        {albums.map((album) => (
+          <Card key={album.id} album={album} />
+        ))}
       </div>
     </section>
   );
