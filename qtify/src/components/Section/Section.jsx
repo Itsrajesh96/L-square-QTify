@@ -9,12 +9,17 @@ import styles from "./Section.module.css";
 function Section({
   title = "Top Albums",
   endpoint = "https://qtify-backend.labs.crio.do/albums/top",
+  showToggle = true,
+  customLayout = false,
+  children,
 }) {
   const [albums, setAlbums] = useState([]);
   const [expanded, setExpanded] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    if (customLayout) return;
+
     let active = true;
 
     async function fetchAlbums() {
@@ -41,14 +46,14 @@ function Section({
     return () => {
       active = false;
     };
-  }, [endpoint, title]);
+  }, [endpoint, title, customLayout]);
 
   return (
     <section className={styles.section}>
       <div className={styles.sectionHeader}>
         <h2>{title}</h2>
 
-        {albums.length > 4 && (
+        {!customLayout && showToggle && albums.length > 4 && (
           <button
             className={styles.toggleButton}
             type="button"
@@ -65,7 +70,9 @@ function Section({
         </p>
       )}
 
-      {expanded ? (
+      {customLayout ? (
+        children
+      ) : expanded ? (
         <div className={styles.albumGrid}>
           {albums.map((album) => (
             <Card key={album.id} album={album} />

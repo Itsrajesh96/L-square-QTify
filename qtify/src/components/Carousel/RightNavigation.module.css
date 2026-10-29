@@ -1,0 +1,37 @@
+
+.navigationButton {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #2ecc50;
+  cursor: pointer;
+
+  transform: translate(30%, -50%);
+}
+
+.navigationButton img {
+  display: block;
+  width: 11px;
+  height: 20px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.navigationButton:hover {
+  background-color: #25b844;
+}
+
+.navigationButton:disabled {
+  display: none;
+}
